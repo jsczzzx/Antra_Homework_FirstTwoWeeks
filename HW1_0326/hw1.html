@@ -8,11 +8,14 @@
         .flex-container {
             display: flex;
             flex-direction: column;
+            margin: auto;
+            max-width: 600px;
             align-items: center;
+            font-family: Arial, sans-serif;
         }
         .flex-container > div {
             display: flex;
-            width: 50%;
+            width: 100%;
             justify-content: space-around;
             align-items: center;
             padding: 5px;
@@ -71,35 +74,40 @@
         }
     </style>
 </head>
-<body class="flex-container">
-    <h1>Sign Up</h1>
-    <div>
-        <input placeholder="First Name">
-        <input placeholder="Last Name">
-    </div>
-    <div>
-        <input placeholder="Mobile No.">
-    </div>
-    <div>
-        <input placeholder="Email Address">
-    </div>
-    <div>
-        <input placeholder="Password">
-        <input placeholder="Confirm Password">
-    </div>
-    <div>
+<body>
+    <div  class="flex-container">
+        <header>
+            <h1>Sign Up</h1>
+        </header>
         <div>
-            <input class="checkbox" type="checkbox">
-            <span class="thick">
-                I Agree
-            </span>
+            <input placeholder="First Name">
+            <input placeholder="Last Name">
         </div>
-        <p class="checkbox">By clicking <span class="register">Register</span>, you agree to the <a class="no-decoration" href="https://www.google.com" target="_blank">Terms and Conditions</a> set out by this site, including our Cookie Use.</p>
+        <div>
+            <input placeholder="Mobile No.">
+        </div>
+        <div>
+            <input placeholder="Email Address">
+        </div>
+        <div>
+            <input placeholder="Password">
+            <input placeholder="Confirm Password">
+        </div>
+        <div>
+            <div>
+                <input class="checkbox" type="checkbox">
+                <span class="thick">
+                    I Agree
+                </span>
+            </div>
+            <p class="checkbox">By clicking <span class="register">Register</span>, you agree to the <a class="no-decoration" href="https://www.google.com" target="_blank">Terms and Conditions</a> set out by this site, including our Cookie Use.</p>
+        </div>
+        <div>
+            <button class="register">Register</button>
+            <button class="sign-in">Sign In</button>
+        </div>
     </div>
-    <div>
-        <button class="register">Register</button>
-        <button class="sign-in">Sign In</button>
-    </div>
+
 </body>
 </html>
 
