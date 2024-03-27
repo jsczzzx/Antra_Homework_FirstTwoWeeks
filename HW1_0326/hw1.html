@@ -52,7 +52,7 @@
         button.register {
             background-color: RoyalBlue;
         }
-        button.signin {
+        button.sign-in {
             background-color: MediumSeaGreen;
         }
         span.thick {
@@ -64,6 +64,10 @@
             border-radius: 4px;
             background-color: RoyalBlue;
             color: White;
+        }
+        a.no-decoration {
+            text-decoration: none;
+            color: Blue;
         }
     </style>
 </head>
@@ -90,11 +94,11 @@
                 I Agree
             </span>
         </div>
-        <p class="checkbox">By clicking <span class="register">Register</span>, you agree to the <a href="https://www.google.com">Terms and Conditions</a> set out by this site, including our Cookie Use.</p>
+        <p class="checkbox">By clicking <span class="register">Register</span>, you agree to the <a class="no-decoration" href="https://www.google.com" target="_blank">Terms and Conditions</a> set out by this site, including our Cookie Use.</p>
     </div>
     <div>
         <button class="register">Register</button>
-        <button class="signin">Sign In</button>
+        <button class="sign-in">Sign In</button>
     </div>
 </body>
 </html>
