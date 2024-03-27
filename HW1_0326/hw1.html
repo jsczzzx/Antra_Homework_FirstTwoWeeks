@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty HTML Page</title>
+    <style>
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .flex-container > div {
+            display: flex;
+            width: 50%;
+            justify-content: space-around;
+            align-items: center;
+            padding: 5px;
+        }
+        .flex-container > div > input {
+            margin: 5px;
+            border: 1px solid grey;
+            padding: 10px;
+            border-radius: 6px;
+            width: 100%;
+        }
+        .flex-container > div > input:focus {
+            border: 1px solid #48abe0;
+            box-shadow: 0 0 5px 1px #48abe0;
+            transition: 0.5s;
+            outline: none;
+        }
+        .flex-container > div > input.checkbox {
+            margin: 5px;
+            border: 1px solid grey;
+            padding: 10px;
+            border-radius: 6px;
+            width: auto;
+        }        
+        .flex-container > div > p {
+            width: 75%;
+        }
+        .flex-container > div > button {
+            margin: 5px;
+            border: 0px;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            color: White;
+        }
+        button.register {
+            background-color: RoyalBlue;
+        }
+        button.signin {
+            background-color: MediumSeaGreen;
+        }
+        span.thick {
+            font-weight: bold;
+        }
+        span.register {
+            margin: 1px;
+            padding: 3px;
+            border-radius: 4px;
+            background-color: RoyalBlue;
+            color: White;
+        }
+    </style>
+</head>
+<body class="flex-container">
+    <h1>Sign Up</h1>
+    <div>
+        <input placeholder="First Name">
+        <input placeholder="Last Name">
+    </div>
+    <div>
+        <input placeholder="Mobile No.">
+    </div>
+    <div>
+        <input placeholder="Email Address">
+    </div>
+    <div>
+        <input placeholder="Password">
+        <input placeholder="Confirm Password">
+    </div>
+    <div>
+        <div>
+            <input class="checkbox" type="checkbox">
+            <span class="thick">
+                I Agree
+            </span>
+        </div>
+        <p class="checkbox">By clicking <span class="register">Register</span>, you agree to the <a href="https://www.google.com">Terms and Conditions</a> set out by this site, including our Cookie Use.</p>
+    </div>
+    <div>
+        <button class="register">Register</button>
+        <button class="signin">Sign In</button>
+    </div>
+</body>
+</html>
+
+
