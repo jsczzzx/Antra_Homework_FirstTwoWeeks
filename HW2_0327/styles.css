@@ -3,19 +3,8 @@ html, body {
     padding: 0;
 }
 
-.flex-container {
-    display: flex;
-    flex-direction: column;
-    margin: auto;
-    align-items: center;
-    font-family: Arial, sans-serif;
-}
-.flex-container > div {
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-}
+
+
 p, h1 {
     width: 80%;
     padding: 20px;
@@ -27,14 +16,27 @@ p, h1 {
 #section-2 {
     width: 80%
 }
-.menu {
+.banner {
+    margin: 0;
+    width: 100%;
     height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.menu {
+    position: fixed;
+    left: 0;
+    top: 0;
     background-color: black;
 }
 .footer {
-    height: 50px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     background-color: green;
 }
+
 .topnav > a {
     text-decoration: none;
     color: white;
