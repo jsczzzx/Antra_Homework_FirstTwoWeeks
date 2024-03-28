@@ -8,6 +8,10 @@ p, h1 {
     padding: 0px;
 }
 
+li {
+    padding: 0 10px 0 10px;
+}
+
 #section-1 {
     position: fixed;
     left: 0;
@@ -48,8 +52,8 @@ p, h1 {
     position: fixed;
     left: 0;
     top: 0;
-    padding-left: 160px;
-    justify-content: center;
+    padding-left: 10%;
+    justify-content: flex-start;
     background-color: black;
 }
 
@@ -57,7 +61,14 @@ p, h1 {
     position: fixed;
     left: 0;
     bottom: 0;
+    justify-content: space-between;
     background-color: green;
+}
+
+.footer > ul {
+    width: 15%;
+    display: flex;
+    justify-content: space-around;
 }
 
 li {
