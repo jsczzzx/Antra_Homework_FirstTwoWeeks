@@ -3,44 +3,56 @@ html, body {
     padding: 0;
 }
 
-
-
 p, h1 {
     width: 80%;
-    padding: 20px;
+    padding: 0px;
 }
+
 #section-1 {
     position: fixed;
     left: 0;
     top: 50px;
+    padding: 0 10% 0 10%;
     width: 100%;
     height: 200px;
+    display: flex;
     flex-direction: column;
+    justify-content: center;
     background-color: gray;
 }
+
 #section-2 {
     position: fixed;
     left: 0;
     top: 250px;
+    padding: 0 10% 0 10%;
+
     width: 80%;
     display: flex;
     justify-content: flex-end;
 }
+
+#section-2 > p {
+    padding: 20px;
+}
+
 .banner {
     margin: 0;
     width: 100%;
     height: 50px;
     display: flex;
-    justify-content: space-around;
     align-items: center;
 }
+
 .menu {
     position: fixed;
     left: 0;
     top: 0;
-    justify-content: flex-start;
+    padding-left: 160px;
+    justify-content: center;
     background-color: black;
 }
+
 .footer {
     position: fixed;
     left: 0;
@@ -55,10 +67,4 @@ li {
 li > a {
     text-decoration: none;
     color: white;
-}
-
-@media (max-width: 800px) {
-    .flex-container > div {
-        flex-direction: column;
-    }
 }
