@@ -1,4 +1,4 @@
-html, body {
+body {
     margin: 0;
     padding: 0;
 }
@@ -29,7 +29,7 @@ li {
     position: fixed;
     left: 0;
     top: 250px;
-    padding: 0 10% 0 10%;
+    padding: 0 8.5% 0 8.5%;
 
     width: 80%;
     display: flex;
@@ -37,7 +37,7 @@ li {
 }
 
 #section-2 > p {
-    padding: 20px;
+    padding: 2%;
 }
 
 .banner {
@@ -61,12 +61,21 @@ li {
     position: fixed;
     left: 0;
     bottom: 0;
+    padding: 0 0% 0 0%;
     justify-content: space-between;
     background-color: green;
 }
 
-.footer > ul {
+.footer-left {
     width: 15%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer-right {
+    background-color: black;
+    width: 15%;
+    padding-right: 15%;
     display: flex;
     justify-content: space-around;
 }
