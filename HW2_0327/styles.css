@@ -10,11 +10,21 @@ p, h1 {
     padding: 20px;
 }
 #section-1 {
+    position: fixed;
+    left: 0;
+    top: 50px;
+    width: 100%;
+    height: 200px;
     flex-direction: column;
     background-color: gray;
 }
 #section-2 {
-    width: 80%
+    position: fixed;
+    left: 0;
+    top: 250px;
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
 }
 .banner {
     margin: 0;
@@ -28,6 +38,7 @@ p, h1 {
     position: fixed;
     left: 0;
     top: 0;
+    justify-content: flex-start;
     background-color: black;
 }
 .footer {
@@ -37,13 +48,13 @@ p, h1 {
     background-color: green;
 }
 
-.topnav > a {
+li {
+    list-style-type: none;
+}
+
+li > a {
     text-decoration: none;
     color: white;
-}
-.footer > a {
-    text-decoration: none;
-    color: white;  
 }
 
 @media (max-width: 800px) {
