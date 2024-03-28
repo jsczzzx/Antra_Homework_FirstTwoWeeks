@@ -1,18 +1,17 @@
+p, h1 {
+    font-family: Arial, sans-serif;
+}
+
 body {
     margin: 0;
     padding: 0;
-}
-
-p, h1 {
-    width: 80%;
-    padding: 0px;
 }
 
 li {
     padding: 0 10px 0 10px;
 }
 
-#section-1 {
+.section-1 {
     position: fixed;
     left: 0;
     top: 50px;
@@ -25,7 +24,7 @@ li {
     background-color: gray;
 }
 
-#section-2 {
+.section-2 {
     position: fixed;
     left: 0;
     top: 250px;
@@ -33,10 +32,9 @@ li {
 
     width: 80%;
     display: flex;
-    justify-content: flex-end;
 }
 
-#section-2 > p {
+.section-2 > p {
     padding: 2%;
 }
 
@@ -66,17 +64,22 @@ li {
     background-color: green;
 }
 
-.footer-left {
-    width: 15%;
+.footer-mid {
     display: flex;
+    flex:2;
+}
+
+.footer-left {
+    padding-left: 8.5%;
+    display: flex;
+    flex: 1;
     justify-content: space-around;
 }
 
 .footer-right {
-    background-color: black;
-    width: 15%;
-    padding-right: 15%;
+    padding-right: 8.5%;
     display: flex;
+    flex: 1;
     justify-content: space-around;
 }
 
