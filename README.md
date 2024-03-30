@@ -5,3 +5,6 @@
 
 ## HW2_0327
 ![Screenshot 2024-03-28 001445](https://github.com/jsczzzx/Antra_Homework_FirstTwoWeeks/assets/39892107/bcfe0284-a945-49c1-8da5-d3998f466562)
+
+## HW3_0328
+Javascript questions
