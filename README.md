@@ -10,4 +10,4 @@
 Javascript questions
 
 ## HW4_0401
-Prototype
+Implement your own prototype methods for array functions: filter and reduce.
