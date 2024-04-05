@@ -1,6 +1,6 @@
 const Api = (() => {
     // Fetch data from server
-    const url = "localhost:4232/courseList";
+    const url = "http://localhost:4232/courseList";
     const getData = fetch(url).then((res) => res.json());
     return {
       getData,
@@ -16,14 +16,16 @@ const Api = (() => {
     };
 
     const createTmp = (arr) => {
-      let tmp = "";
+      let tmp = `<h2>Available Courses</h2>`;
       arr.forEach((course) => {
         tmp += 
-        `<p index="${course.courseId}">
-            ${course.courseName}<br>
-            Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
-            Course Credit: ${course.credit}<br>
-        </p>`;
+            `<div class="course-box ${course.courseId % 2 == 0 ?'' : 'green'}">
+                <p>
+                    ${course.courseName}<br>
+                    Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
+                    Course Credit: ${course.credit}<br>
+                </p>
+            </div>`;
       });
       return tmp;
     };
@@ -71,7 +73,7 @@ const Api = (() => {
     const { domStr } = view;
   
     const state = new State();
-    const init = () => {
+    const initCourse = () => {
       return getData.then((data) => {  // let init() returns a promise so that deleteTodo() can be called after getData done.
         state.newCourse = data;
       });
