@@ -19,7 +19,7 @@ const Api = (() => {
       let tmp = `<h2>Available Courses</h2>`;
       arr.forEach((course, index) => {
         tmp += 
-            `<div id=${course.courseId} class="course-box ${index % 2 != 0 ?'' : 'green'}">
+            `<div id=${course.courseId} class="course-box ${index % 2 != 0 ?'' : 'green'}" credit=${course.credit}>
                 <p>
                     ${course.courseName}<br>
                     Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
@@ -34,7 +34,7 @@ const Api = (() => {
         let tmp = `<h2>Selected Courses</h2>`;
         arr.forEach((course, index) => {
           tmp += 
-              `<div id=${course.courseId} class="course-box ${index % 2 != 0 ?'' : 'green'}">
+              `<div id=${course.courseId} credit="t" class="course-box ${index % 2 != 0 ?'' : 'green'}">
                   <p>
                       ${course.courseName}<br>
                       Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
@@ -67,6 +67,7 @@ const Api = (() => {
         this._courseList = [];
         this._copiedList = [];
         this._selectedList = [];
+        this._credits = 0;
       }
       get getCourseList() {
         return this._courseList;
@@ -93,6 +94,16 @@ const Api = (() => {
         const selectedBox = document.querySelector(domStr.selectedBox);
         const tmp = createAvailableTmp(this._selectedList);
         render(selectedBox, tmp);
+      }
+
+      get getCredits() {
+        return this._credits;
+      }
+      set addCredits(credit) {
+        this._credits += credit;
+      }
+      set removeCredits(credit) {
+        this._credits -= credit;
       }
     }
   
@@ -125,6 +136,7 @@ const Api = (() => {
                     const copiedList = state.getCopiedList;
                     copiedList.push(this.id);
                     state.newCopiedCourse = copiedList;
+                    state.addCredits = +this.getAttribute('credit');
                 } else {
                     this.classList.remove('blue');
                     if (index %  2 == 0)
@@ -132,8 +144,9 @@ const Api = (() => {
                         const copiedList = state.getCopiedList;
                         const newCopiedList = copiedList.filter(item => item != this.id);
                         state.newCopiedCourse = newCopiedList;
+                        state.removeCredits = +this.getAttribute('credit');
                 }
-                alert(JSON.stringify(state._copiedList));
+                alert(state._credits);
             });
         });
         
