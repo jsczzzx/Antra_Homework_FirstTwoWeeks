@@ -15,11 +15,11 @@ const Api = (() => {
       selectBtn: "#select-button",
     };
 
-    const createTmp = (arr) => {
+    const createAvailableTmp = (arr) => {
       let tmp = `<h2>Available Courses</h2>`;
-      arr.forEach((course) => {
+      arr.forEach((course, index) => {
         tmp += 
-            `<div index=${course.courseId} class="course-box ${course.courseId % 2 == 0 ?'' : 'green'}">
+            `<div id=${course.courseId} class="course-box ${index % 2 != 0 ?'' : 'green'}">
                 <p>
                     ${course.courseName}<br>
                     Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
@@ -29,6 +29,21 @@ const Api = (() => {
       });
       return tmp;
     };
+
+    const createSelectedTmp = (arr) => {
+        let tmp = `<h2>Selected Courses</h2>`;
+        arr.forEach((course, index) => {
+          tmp += 
+              `<div id=${course.courseId} class="course-box ${index % 2 != 0 ?'' : 'green'}">
+                  <p>
+                      ${course.courseName}<br>
+                      Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
+                      Course Credit: ${course.credit}<br>
+                  </p>
+              </div>`;
+        });
+        return tmp;
+      };
   
     const render = (ele, tmp) => {
       ele.innerHTML = tmp;
@@ -36,7 +51,7 @@ const Api = (() => {
   
     return {
       domStr,
-      createTmp,
+      createAvailableTmp,
       render,
     };
   })();
@@ -45,11 +60,13 @@ const Api = (() => {
 
     const { getData } = api;
   
-    const { domStr, createTmp, render } = view;
+    const { domStr, createAvailableTmp, render } = view;
   
     class State {
       constructor() {
         this._courseList = [];
+        this._copiedList = [];
+        this._selectedList = [];
       }
       get getCourseList() {
         return this._courseList;
@@ -57,8 +74,25 @@ const Api = (() => {
       set newCourse(arr) {
         this._courseList = arr;
         const availableBox = document.querySelector(domStr.availableBox);
-        const tmp = createTmp(this._courseList);
+        const tmp = createAvailableTmp(this._courseList);
         render(availableBox, tmp);
+      }
+
+      get getCopiedList() {
+        return this._copiedList;
+      }
+      set newCopiedCourse(arr) {
+        this._copiedList = arr;
+      }
+
+      get getSelectedList() {
+        return this._selectedList;
+      }
+      set newSelectedCourse(arr) {
+        this._selectedList = arr;
+        const selectedBox = document.querySelector(domStr.selectedBox);
+        const tmp = createAvailableTmp(this._selectedList);
+        render(selectedBox, tmp);
       }
     }
   
@@ -78,6 +112,7 @@ const Api = (() => {
         state.newCourse = data;
       });
     };
+    
 
     const selectCourse = () => {
         const courseBoxes = document.querySelectorAll(domStr.availableBox+' '+domStr.courseBox);
@@ -87,11 +122,18 @@ const Api = (() => {
                 if (!this.classList.contains('blue')) {
                     this.classList.remove('green');
                     this.classList.add('blue');
+                    const copiedList = state.getCopiedList;
+                    copiedList.push(this.id);
+                    state.newCopiedCourse = copiedList;
                 } else {
                     this.classList.remove('blue');
                     if (index %  2 == 0)
                         this.classList.add('green');
+                        const copiedList = state.getCopiedList;
+                        const newCopiedList = copiedList.filter(item => item != this.id);
+                        state.newCopiedCourse = newCopiedList;
                 }
+                alert(JSON.stringify(state._copiedList));
             });
         });
         
