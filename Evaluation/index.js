@@ -13,6 +13,7 @@ const Api = (() => {
       selectedBox: "#selected-courses",
       courseBox: ".course-box",
       selectBtn: "#select-button",
+      sum: "#sum",
     };
 
     const createAvailableTmp = (arr) => {
@@ -101,9 +102,13 @@ const Api = (() => {
       }
       set addCredits(credit) {
         this._credits += credit;
+        let sum = document.querySelector(domStr.sum);
+        render(sum, this.getCredits);
       }
       set removeCredits(credit) {
         this._credits -= credit;
+        let sum = document.querySelector(domStr.sum);
+        render(sum, this.getCredits);
       }
     }
   
