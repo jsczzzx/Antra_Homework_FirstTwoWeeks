@@ -19,7 +19,7 @@ const Api = (() => {
       let tmp = `<h2>Available Courses</h2>`;
       arr.forEach((course) => {
         tmp += 
-            `<div class="course-box ${course.courseId % 2 == 0 ?'' : 'green'}">
+            `<div index=${course.courseId} class="course-box ${course.courseId % 2 == 0 ?'' : 'green'}">
                 <p>
                     ${course.courseName}<br>
                     Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
@@ -73,14 +73,34 @@ const Api = (() => {
     const { domStr } = view;
   
     const state = new State();
-    const initCourse = () => {
+    const init = () => {
       return getData.then((data) => {  // let init() returns a promise so that deleteTodo() can be called after getData done.
         state.newCourse = data;
       });
     };
 
+    const selectCourse = () => {
+        const courseBoxes = document.querySelectorAll(domStr.availableBox+' '+domStr.courseBox);
+
+        courseBoxes.forEach((courseBox, index) => {
+            courseBox.addEventListener('click', function() {
+                if (!this.classList.contains('blue')) {
+                    this.classList.remove('green');
+                    this.classList.add('blue');
+                } else {
+                    this.classList.remove('blue');
+                    if (index %  2 == 0)
+                        this.classList.add('green');
+                }
+            });
+        });
+        
+    }
+
     const bootstrap = () => {
-      initCourse();
+      init().then(() => {
+        selectCourse();
+      })
     }
   
     return {
