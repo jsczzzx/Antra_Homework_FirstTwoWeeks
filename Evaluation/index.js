@@ -20,7 +20,7 @@ const Api = (() => {
       let tmp = `<h2>Available Courses</h2>`;
       arr.forEach((course, index) => {
         tmp += 
-            `<div id=${course.courseId} class="course-box ${index % 2 != 0 ?'' : 'green'}" credit=${course.credit}>
+            `<div id=${course.courseId}  courseName="${course.courseName}" credit="${course.credit}" class="course-box ${index % 2 != 0 ?'' : 'green'}" credit=${course.credit}>
                 <p>
                     ${course.courseName}<br>
                     Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
@@ -35,7 +35,7 @@ const Api = (() => {
         let tmp = `<h2>Selected Courses</h2>`;
         arr.forEach((course, index) => {
           tmp += 
-              `<div id=${course.courseId} credit="t" class="course-box ${index % 2 != 0 ?'' : 'green'}">
+              `<div id=${course.courseId} courseName="${course.courseName}" creditCredit="${course.credit}" class="course-box ${index % 2 != 0 ?'' : 'green'}">
                   <p>
                       ${course.courseName}<br>
                       Course Type: ${course.required ? 'Compulsory' : 'Elective'}<br>
@@ -172,7 +172,8 @@ const Api = (() => {
               text = "Successfully submitted!";
               const copiedList = state.getCopiedList;
               const availableCourse = state.getCourseList;
-              let selectedCourse = [];
+              const selectedCourse = [];
+              const newAvailableCourse = [];
               //alert(copiedList.includes('1'));
               for (let i = 0; i < availableCourse.length; i++) {
 ;
@@ -181,8 +182,16 @@ const Api = (() => {
                     selectedCourse.push(availableCourse[i]);
                 }
               }
+
+              for (let i = 0; i < availableCourse.length; i++) {
+                if (!copiedList.includes(availableCourse[i].courseId.toString())) {
+                  newAvailableCourse.push(availableCourse[i]);
+                }
+              }
               //let selectedCourse = availableCourse;
               state.newSelectedCourse = selectedCourse;
+              state.newCourse = newAvailableCourse;
+              //alert(JSON.stringify(availableCourse));
               button.disabled = true;
               //alert(JSON.stringify(selectedCourse));
             }

@@ -9,6 +9,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
     width: 80%;
+    text-align: center;
 }
 
 .courses-box {
