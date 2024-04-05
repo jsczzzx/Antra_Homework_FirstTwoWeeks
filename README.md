@@ -8,3 +8,6 @@
 
 ## HW3_0328
 Javascript questions
+
+## HW4_0401
+Implement your own prototype methods for array functions: filter and reduce.
