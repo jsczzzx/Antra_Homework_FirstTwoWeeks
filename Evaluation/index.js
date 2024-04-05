@@ -175,14 +175,15 @@ const Api = (() => {
               let selectedCourse = [];
               //alert(copiedList.includes('1'));
               for (let i = 0; i < availableCourse.length; i++) {
+;
                 //alert(copiedList.indexOf(availableCourse[i].courseId));
-                if (copiedList.includes(availableCourse[i].courseId)) {
+                if (copiedList.includes(availableCourse[i].courseId.toString())) {
                     selectedCourse.push(availableCourse[i]);
                 }
               }
               //let selectedCourse = availableCourse;
               state.newSelectedCourse = selectedCourse;
-              this.disabled = true;
+              button.disabled = true;
               //alert(JSON.stringify(selectedCourse));
             }
 
