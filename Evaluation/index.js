@@ -53,6 +53,7 @@ const Api = (() => {
     return {
       domStr,
       createAvailableTmp,
+      createSelectedTmp,
       render,
     };
   })();
@@ -61,7 +62,7 @@ const Api = (() => {
 
     const { getData } = api;
   
-    const { domStr, createAvailableTmp, render } = view;
+    const { domStr, createAvailableTmp, createSelectedTmp, render } = view;
   
     class State {
       constructor() {
@@ -93,7 +94,7 @@ const Api = (() => {
       set newSelectedCourse(arr) {
         this._selectedList = arr;
         const selectedBox = document.querySelector(domStr.selectedBox);
-        const tmp = createAvailableTmp(this._selectedList);
+        const tmp = createSelectedTmp(this._selectedList);
         render(selectedBox, tmp);
       }
 
@@ -136,12 +137,18 @@ const Api = (() => {
         courseBoxes.forEach((courseBox, index) => {
             courseBox.addEventListener('click', function() {
                 if (!this.classList.contains('blue')) {
-                    this.classList.remove('green');
-                    this.classList.add('blue');
-                    const copiedList = state.getCopiedList;
-                    copiedList.push(this.id);
-                    state.newCopiedCourse = copiedList;
-                    state.addCredits = +this.getAttribute('credit');
+                    let credits = state.getCredits;
+                    if (credits + parseInt(this.getAttribute('credit')) > 18) {
+                        alert("You can only choose up to 18 credits in one semester");
+                    } else {
+                        this.classList.remove('green');
+                        this.classList.add('blue');
+                        const copiedList = state.getCopiedList;
+                        copiedList.push(this.id);
+                        state.newCopiedCourse = copiedList;
+                        state.addCredits = +this.getAttribute('credit');
+                    }
+
                 } else {
                     this.classList.remove('blue');
                     if (index %  2 == 0)
@@ -151,15 +158,41 @@ const Api = (() => {
                         state.newCopiedCourse = newCopiedList;
                         state.removeCredits = +this.getAttribute('credit');
                 }
-                alert(state._credits);
             });
         });
         
     }
 
+    const submit = () => {
+        const button = document.querySelector(domStr.selectBtn);
+        button.addEventListener('click', (event) => {
+            const credits = state.getCredits;
+            let text = "You have chosen "+credits+" credits in this semester. You cannot change once you submit. Do you want to confirm?";
+            if (confirm(text) == true) {
+              text = "Successfully submitted!";
+              const copiedList = state.getCopiedList;
+              const availableCourse = state.getCourseList;
+              let selectedCourse = [];
+              //alert(copiedList.includes('1'));
+              for (let i = 0; i < availableCourse.length; i++) {
+                //alert(copiedList.indexOf(availableCourse[i].courseId));
+                if (copiedList.includes(availableCourse[i].courseId)) {
+                    selectedCourse.push(availableCourse[i]);
+                }
+              }
+              //let selectedCourse = availableCourse;
+              state.newSelectedCourse = selectedCourse;
+              this.disabled = true;
+              //alert(JSON.stringify(selectedCourse));
+            }
+
+        })
+    }
+
     const bootstrap = () => {
       init().then(() => {
         selectCourse();
+        submit();
       })
     }
   
